@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hasil Pencarian</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Hasil Pencarian</h1>
+        {% if search_term %}
+            <p>Hasil pencarian untuk: <strong>{{ search_term }}</strong></p>
+        {% endif %}
+        {% if employees %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Gaji</th>
+                    <th>Alamat</th>
+                    <th>Nomor Telepon</th>
+                    <th>Jabatan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employees %}
+                <tr>
+                    <td>{{ employee['id'] }}</td>
+                    <td>{{ employee['name'] }}</td>
+                    <td>{{ employee['email'] }}</td>
+                    <td>{{ employee['salary'] }}</td>
+                    <td>{{ employee['address'] }}</td>
+                    <td>{{ employee['phone_number'] }}</td>
+                    <td>{{ employee['position'] }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_employee', id=employee['id']) }}" class="button">Edit</a>
+                        <a href="{{ url_for('delete_employee', id=employee['id']) }}" class="button delete" onclick="return confirm('Apakah Anda yakin ingin menghapus karyawan ini?')">Hapus</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p>Tidak ada karyawan yang ditemukan.</p>
+        {% endif %}
+        <p><a href="{{ url_for('index') }}" class="button">Kembali ke Daftar Karyawan</a></p>
+    </div>
+</body>
+</html>

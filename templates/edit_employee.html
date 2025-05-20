@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Karyawan</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Karyawan</h1>
+        <form method="POST">
+            <label for="name">Nama:</label><br>
+            <input type="text" id="name" name="name" value="{{ employee['name'] }}" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" value="{{ employee['email'] }}" required><br><br>
+            <label for="salary">Gaji:</label><br>
+            <input type="number" id="salary" name="salary" step="0.01" value="{{ employee['salary'] }}" required><br><br>
+            <label for="address">Alamat:</label><br>
+            <textarea id="address" name="address">{{ employee['address'] }}</textarea><br><br>
+            <label for="phone_number">Nomor Telepon:</label><br>
+            <input type="text" id="phone_number" name="phone_number" value="{{ employee['phone_number'] }}"><br><br>
+            <label for="position">Jabatan:</label><br>
+            <input type="text" id="position" name="position" value="{{ employee['position'] }}"><br><br>
+            <input type="submit" value="Simpan Perubahan" class="button">
+        </form>
+        <p><a href="{{ url_for('index') }}" class="button">Kembali ke Daftar Karyawan</a></p>
+    </div>
+</body>
+</html>
