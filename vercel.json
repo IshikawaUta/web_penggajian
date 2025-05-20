@@ -2,18 +2,34 @@
   "version": 2,
   "builds": [
     {
-      "src": "app.py",
+      "src": "api/flask_app.py",
       "use": "@vercel/python",
       "config": {
         "maxLambdaSize": "15mb",
         "runtime": "python3.12.3"
       }
+    },
+    {
+      "src": "static/**",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "templates/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
+      "src": "/static/(.*)",
+      "dest": "/static/$1"
+    },
+    {
+      "src": "/templates/(.*)",
+      "dest": "/templates/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "app.py"
+      "dest": "api/flask_app.py"
     }
   ]
 }

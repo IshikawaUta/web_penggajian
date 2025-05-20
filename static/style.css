@@ -1,118 +1,242 @@
+/* Gaya Umum */
 body {
     font-family: sans-serif;
-    margin: 20px;
+    margin: 0;
     background-color: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    color: #333;
+    line-height: 1.6;
+    font-size: 1rem;
 }
 
 .container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
     background-color: white;
-    padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 960px;
+    box-sizing: border-box;
 }
 
 h1 {
     text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #ccc;
+    color: #007bff;
+    margin-bottom: 20px;
 }
 
 .button {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
-    text-align: center;
+    padding: 10px 15px;
     text-decoration: none;
-    cursor: pointer;
-    border: 2px solid #4CAF50;
-    color: #4CAF50;
-    background-color: white;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-right: 5px;
-}
-
-.button:hover {
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: white;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
 .button.delete {
-    border-color: #f44336;
-    color: #f44336;
+    background-color: #dc3545;
 }
 
-.button.delete:hover {
-    background-color: #f44336;
-    color: white;
+/* Tabel Responsif */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #ddd;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Form Responsif */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="number"],
-textarea {
+textarea,
+input[type="submit"] {
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
+    border-radius: 5px;
     box-sizing: border-box;
-    width: 100%;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease;
+    font-size: 1em;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="number"]:focus,
-textarea:focus {
-    outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+textarea {
+    min-height: 100px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 12px 15px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #e0f7fa;
+input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-a {
-    text-decoration: none;
-    color: #007bff;
-    transition: color 0.3s ease;
+input[type="submit"]:hover {
+    background-color: #218838;
 }
 
-a:hover {
-    color: #0056b3;
+/* Media Queries untuk Responsif */
+
+/* Untuk layar dengan lebar maksimum 600px (ponsel) */
+@media (max-width: 600px) {
+    body {
+        font-size: 1.1rem;
+    }
+
+    .container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 15px;
+        text-align: center;
+    }
+
+    .button {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-right: 0;
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 1.1em;
+    }
+
+    /* Tabel Responsif (Tampilan Baris Per Baris) */
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+    }
+
+    table td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+        border-bottom: 1px solid #eee;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        padding-left: 10px;
+        text-align: left;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 40%;
+        box-sizing: border-box;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    textarea,
+    input[type="submit"] {
+        font-size: 1.1em;
+        padding: 12px;
+    }
+}
+
+/* Untuk layar dengan lebar antara 601px dan 991px (tablet) */
+@media (min-width: 601px) and (max-width: 991px) {
+    body {
+        font-size: 1.05rem;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    /* Tabel Responsif (Mungkin dengan scroll horizontal) */
+    table {
+        display: block;
+        overflow-x: auto; /* Aktifkan scroll horizontal jika kolom tidak muat */
+    }
+
+    table thead {
+        display: table-header-group;
+    }
+
+    table tr {
+        display: table-row;
+    }
+
+    table td {
+        display: table-cell;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table td::before {
+        display: none; /* Sembunyikan label mobile */
+    }
+}
+
+/* Untuk layar dengan lebar minimum 992px (desktop) */
+@media (min-width: 992px) {
+    body {
+        font-size: 1.1rem;
+    }
+
+    /* Tata Letak Form dengan Flexbox pada Desktop */
+    form {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px; /* Batasi lebar form pada desktop */
+        margin: 0 auto;
+    }
+
+    .form-group {
+        display: flex;
+        margin-bottom: 15px;
+        align-items: center;
+    }
+
+    .form-group label {
+        flex-basis: 120px;
+        text-align: right;
+        padding-right: 15px;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group input[type="number"],
+    .form-group textarea {
+        flex-grow: 1;
+    }
+
+    .form-group input[type="submit"] {
+        width: auto;
+        margin-left: 120px; /* Indent tombol submit */
+    }
 }

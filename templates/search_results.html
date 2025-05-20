@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Hasil Pencarian</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
@@ -27,16 +28,16 @@
             <tbody>
                 {% for employee in employees %}
                 <tr>
-                    <td>{{ employee['id'] }}</td>
-                    <td>{{ employee['name'] }}</td>
-                    <td>{{ employee['email'] }}</td>
-                    <td>{{ employee['salary'] }}</td>
-                    <td>{{ employee['address'] }}</td>
-                    <td>{{ employee['phone_number'] }}</td>
-                    <td>{{ employee['position'] }}</td>
+                    <td data-label="ID">{{ employee['_id'] }}</td>
+                    <td data-label="Nama">{{ employee['name'] }}</td>
+                    <td data-label="Email">{{ employee['email'] }}</td>
+                    <td data-label="Gaji">{{ employee['salary'] }}</td>
+                    <td data-label="Alamat">{{ employee['address'] }}</td>
+                    <td data-label="Nomor Telepon">{{ employee['phone_number'] }}</td>
+                    <td data-label="Jabatan">{{ employee['position'] }}</td>
                     <td>
-                        <a href="{{ url_for('edit_employee', id=employee['id']) }}" class="button">Edit</a>
-                        <a href="{{ url_for('delete_employee', id=employee['id']) }}" class="button delete" onclick="return confirm('Apakah Anda yakin ingin menghapus karyawan ini?')">Hapus</a>
+                        <a href="{{ url_for('edit_employee', id=employee['_id']) }}" class="button">Edit</a>
+                        <a href="{{ url_for('delete_employee', id=employee['_id']) }}" class="button delete" onclick="return confirm('Apakah Anda yakin ingin menghapus karyawan ini?')">Hapus</a>
                     </td>
                 </tr>
                 {% endfor %}
