@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tambah Karyawan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Tambah Karyawan</h1>
+        <form method="POST">
+            <label for="name">Nama:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="salary">Gaji:</label><br>
+            <input type="number" id="salary" name="salary" step="0.01" required><br><br>
+            <label for="address">Alamat:</label><br>
+            <textarea id="address" name="address"></textarea><br><br>
+            <label for="phone_number">Nomor Telepon:</label><br>
+            <input type="text" id="phone_number" name="phone_number"><br><br>
+            <label for="position">Jabatan:</label><br>
+            <input type="text" id="position" name="position"><br><br>
+            <input type="submit" value="Tambah Karyawan" class="button">
+        </form>
+        <p><a href="{{ url_for('index') }}" class="button">Kembali ke Daftar Karyawan</a></p>
+    </div>
+</body>
+</html>
